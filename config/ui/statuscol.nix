@@ -8,6 +8,10 @@
   plugins.statuscol = {
     enable = true;
 
+    lazyLoad.settings.event = [
+      "DeferredUIEnter"
+    ];
+
     settings = {
       ft_ignore = [
         "alpha"
@@ -98,7 +102,9 @@
       callback.__raw = /* lua */ ''
         function()
           if not _G.__statuscol_cfg_cache then
-            local m = require('statuscol')
+            local ok, m = pcall(require, 'statuscol')
+            if not ok then return end
+
             for i = 1, 20 do
               local name, value = debug.getupvalue(m.setup, i)
               if name == 'cfg' then

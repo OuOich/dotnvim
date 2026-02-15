@@ -2,6 +2,10 @@
   plugins.tiny-inline-diagnostic = {
     enable = true;
 
+    lazyLoad.settings.event = [
+      "LspAttach"
+    ];
+
     settings = {
       preset = "ghost";
 

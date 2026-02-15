@@ -4,6 +4,11 @@
   plugins.render-markdown = {
     enable = true;
 
+    lazyLoad.settings.ft = [
+      "markdown"
+      (lib.mkIf config.plugins.avante.enable "Avante")
+    ];
+
     settings = {
       file_types = [
         "markdown"

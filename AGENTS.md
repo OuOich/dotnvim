@@ -144,6 +144,22 @@ Guidance for coding agents working in this repository.
 - Do not edit `flake.lock` unless dependency updates are intentional.
 - Avoid introducing new tooling unless required by the task.
 
+## Lazy-loading guidelines
+
+- Keep lazy-loading infrastructure config in `config/core/lz-n.nix`.
+- For new plugins, implement lazy loading by default when it is easy, low-risk, and fits the plugin's usage pattern.
+- Do not force lazy loading when implementation is complex, fragile, or offers little startup benefit.
+- Pick the trigger type by behavior:
+  - `cmd` for command-driven tools (for example git UIs).
+  - `ft` for filetype-specific plugins.
+  - `event` for deferred startup hooks (for example `DeferredUIEnter`, `LspAttach`, `BufReadPost`).
+- Preserve runtime behavior first: keymaps, plugin setup, extensions, and UI customizations must still work after lazy-loading.
+- If code may run before a lazy-loaded module is available, guard with `pcall(require, ...)` and explicit fallback behavior.
+- Validate every lazy-loading change with:
+  - `nix build .#packages.x86_64-linux.default`
+  - plugin smoke checks for key workflows (commands/keymaps)
+  - startup comparison (`--startuptime`, multi-run) before/after when performance is the goal.
+
 ## Quick pre-PR checklist
 
 - `nix develop -c statix check .`

@@ -4,6 +4,10 @@
   plugins.neogit = {
     enable = true;
 
+    lazyLoad.settings.cmd = [
+      "Neogit"
+    ];
+
     settings = {
       signs = {
         section = [
@@ -35,7 +39,9 @@
       (mkSpec
         [
           "<leader>gg"
-          { __raw = "function() require('neogit').open({ cwd = Utils.root() }) end"; }
+          {
+            __raw = "function() vim.cmd.Neogit({ 'cwd=' .. vim.fn.fnameescape(Utils.root()) }) end";
+          }
         ]
         {
           desc = "Neogit";

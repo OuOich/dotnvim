@@ -115,7 +115,7 @@ in
         programs.nixvim.nixpkgs = {
           useGlobalPackages = lib.mkDefault false;
           pkgs = import inputs.nixpkgs {
-            system = pkgs.stdenv.hostPlatform.system;
+            inherit (pkgs.stdenv.hostPlatform) system;
             overlays = configuredOverlays;
           };
         };

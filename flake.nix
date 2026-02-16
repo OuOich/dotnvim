@@ -25,6 +25,7 @@
 
       imports = [
         ./flake/shell.nix
+        ./flake/checks.nix
       ];
 
       flake = {
@@ -81,11 +82,19 @@
             nvim = {
               type = "app";
               program = "${nvim}/bin/nvim";
+
+              meta = {
+                description = "Neovim with Cheng's configuration.";
+              };
             };
 
             nixvim-print-init = {
               type = "app";
               program = "${nvim}/bin/nixvim-print-init";
+
+              meta = {
+                description = "Debug print generated `init.lua` from Nixvim.";
+              };
             };
           };
         };

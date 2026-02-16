@@ -9,9 +9,9 @@
         forbiddenKeys = builtins.filter (k: lib.hasPrefix "__unkeyed-" k) (builtins.attrNames args);
       in
       if len == 0 || len > 2 then
-        throw "mkSpec: 'keys' list must have length 1 or 2, but got ${toString len}."
+        throw "mkSpec: 'keys' list must have length 1 or 2, but got ${toString len}"
       else if forbiddenKeys != [ ] then
-        throw "mkSpec: 'args' contains forbidden keys: ${lib.concatStringsSep ", " forbiddenKeys}."
+        throw "mkSpec: 'args' contains forbidden keys: ${lib.concatStringsSep ", " forbiddenKeys}"
       else
         (lib.listToAttrs (
           lib.imap1 (i: v: {

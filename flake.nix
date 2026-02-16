@@ -24,7 +24,7 @@
       ];
 
       imports = [
-        ./flake-modules/shell.nix
+        ./flake/shell.nix
       ];
 
       flake = {

@@ -309,6 +309,15 @@
         mode = "v";
       })
 
+      (mkSpec [ "<" "<gv" ] {
+        desc = "Indent Left";
+        mode = "v";
+      })
+      (mkSpec [ ">" ">gv" ] {
+        desc = "Indent Right";
+        mode = "v";
+      })
+
       (mkSpec [ "<C-s>" "<cmd>w<cr>" ] {
         desc = "Save File";
         mode = modes.full;

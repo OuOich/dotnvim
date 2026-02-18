@@ -15,6 +15,11 @@
         show_all_diags_on_cursorline = false;
         show_diags_only_under_cursor = false;
 
+        show_source = {
+          enabled = true;
+          if_many = false;
+        };
+
         show_code = true;
 
         experimental = {

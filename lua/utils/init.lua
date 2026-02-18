@@ -11,6 +11,7 @@ M.format = require('utils.format')
 M.lualine = require('utils.lualine')
 M.lsp = require('utils.lsp')
 M.oil = require('utils.oil')
+M.python = require('utils.python')
 M.wk = require('utils.which-key')
 
 return M

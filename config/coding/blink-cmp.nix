@@ -10,7 +10,7 @@
       '';
 
       keymap = {
-        preset = "enter";
+        preset = "super-tab";
       };
 
       appearance = {
@@ -104,10 +104,7 @@
         keymap = {
           preset = "cmdline";
 
-          "<tab>" = [
-            "show"
-            "accept"
-          ];
+          "<tab>" = [ "accept" ];
         };
 
         completion = {

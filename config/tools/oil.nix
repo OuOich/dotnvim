@@ -30,11 +30,18 @@
       ssh.border = "rounded";
       keymaps_help.border = "rounded";
 
-      preview_win.disable_preview.__raw = "Utils.oil.disable_preview";
+      win_options = {
+        winbar = "%!v:lua.Utils.oil.winbar()";
+      };
 
-      win_options.winbar = "%!v:lua.Utils.oil.winbar()";
+      view_options = {
+        show_hidden = true;
+        is_always_hidden.__raw = "Utils.oil.is_always_hidden";
+      };
 
-      view_options.is_always_hidden.__raw = "Utils.oil.is_always_hidden";
+      preview_win = {
+        disable_preview.__raw = "Utils.oil.disable_preview";
+      };
 
       use_default_keymaps = false;
 

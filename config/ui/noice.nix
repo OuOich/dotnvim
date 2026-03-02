@@ -55,11 +55,27 @@
 
           view = "mini";
         }
+
         {
           filter = {
             event = "notify";
             any = [
               { find = "[Neo-tree INFO]"; }
+            ];
+          };
+
+          opts = {
+            skip = true;
+          };
+        }
+
+        {
+          filter = {
+            event = "lsp";
+            kind = "progress";
+            any = [
+              { find = "[Pp]yright"; }
+              { find = "[Bb]asedpyright"; }
             ];
           };
 

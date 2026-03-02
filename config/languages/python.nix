@@ -16,27 +16,27 @@
 
   autoCmd = [
     {
-      callback.__raw = "function(args) Utils.python.lint_buffer(args.buf) end";
+      group = "Auto";
       event = "FileType";
-      group = "Auto";
       pattern = "python";
-    }
-
-    {
-      callback.__raw = "function(args) Utils.python.before_save(args.buf) end";
-      event = "BufWritePre";
-      group = "Auto";
-      pattern = "*.py";
-    }
-
-    {
       callback.__raw = "function(args) Utils.python.lint_buffer(args.buf) end";
+    }
+
+    {
+      group = "Auto";
+      event = "BufWritePre";
+      pattern = "*.py";
+      callback.__raw = "function(args) Utils.python.before_save(args.buf) end";
+    }
+
+    {
+      group = "Auto";
       event = [
         "BufWritePost"
         "InsertLeave"
       ];
-      group = "Auto";
       pattern = "*.py";
+      callback.__raw = "function(args) Utils.python.lint_buffer(args.buf) end";
     }
   ];
 }

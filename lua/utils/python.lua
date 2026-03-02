@@ -201,7 +201,7 @@ function M.lsp_servers(bufnr, state)
     return { 'pylsp' }
   end
 
-  return {}
+  return { 'pyright' }
 end
 
 --- @param name string

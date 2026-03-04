@@ -11,6 +11,11 @@
 
       keymap = {
         preset = "super-tab";
+
+        "<cr>" = [
+          "accept"
+          "fallback"
+        ];
       };
 
       appearance = {

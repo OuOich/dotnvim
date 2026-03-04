@@ -48,7 +48,7 @@
       current_line_blame_opts = {
         virt_text = true;
         use_focus = true;
-        delay = 500;
+        delay = 0;
         virt_text_priority = 100;
       };
     };

@@ -35,6 +35,7 @@
             _module.args.lib' = import ./lib { inherit (pkgs) lib; };
 
             imports = [
+              ./modules/settings
               ./options
               ./config
             ];

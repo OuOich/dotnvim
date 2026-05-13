@@ -1,12 +1,13 @@
 {
   config,
+  settings,
   lib,
   lib',
   ...
 }:
 
 {
-  globals.mapleader = " ";
+  globals.mapleader = settings.core.keymaps.leader;
 
   plugins.which-key.settings.spec =
     with lib'.utils.wk;

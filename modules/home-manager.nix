@@ -44,17 +44,19 @@ in
     extraOverlays = lib.mkOption {
       type = lib.types.listOf lib.types.anything;
       default = [ ];
-      description = ''
-        Additional overlays appended when constructing nixvim's package set.
-      '';
+      description = "Additional overlays appended when constructing nixvim's package set.";
     };
 
     extraImports = lib.mkOption {
       type = lib.types.listOf lib.types.deferredModule;
       default = [ ];
-      description = ''
-        Additional nixvim modules appended to `programs.nixvim.imports`.
-      '';
+      description = "Additional nixvim modules appended to `programs.nixvim.imports`.";
+    };
+
+    settings = lib.mkOption {
+      type = lib.types.attrs;
+      default = { };
+      description = "Settings passed to dotnvim's nixvim module.";
     };
 
     defaultEditor = lib.mkEnableOption "nixvim as the default editor";
@@ -70,17 +72,13 @@ in
     vimAlias = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = ''
-        Symlink `vim` to `nvim`.
-      '';
+      description = "Symlink `vim` to `nvim`.";
     };
 
     viAlias = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = ''
-        Symlink `vi` to `nvim`.
-      '';
+      description = "Symlink `vi` to `nvim`.";
     };
   };
 
@@ -101,7 +99,11 @@ in
         programs.nixvim = {
           enable = true;
 
-          imports = [ self.nixvimModules.default ] ++ cfg.extraImports;
+          imports = [
+            self.nixvimModules.default
+            { dotnvim.settings = cfg.settings; }
+          ]
+          ++ cfg.extraImports;
 
           defaultEditor = lib.mkDefault cfg.defaultEditor;
 

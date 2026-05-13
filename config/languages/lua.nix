@@ -1,5 +1,5 @@
 {
-  plugins.lsp.servers.nil_ls = {
+  plugins.lsp.servers.lua_ls = {
     enable = true;
   };
 

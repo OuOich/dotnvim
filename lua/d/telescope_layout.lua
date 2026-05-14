@@ -1,8 +1,3 @@
---- @class ExtendedNuiLayout : NuiLayout
---- @field prompt TelescopeWindow
---- @field results TelescopeWindow
---- @field preview TelescopeWindow
-
 local function create_layout(picker)
   local NuiLayout = require('nui.layout')
   local NuiPopup = require('nui.popup')
@@ -17,8 +12,6 @@ local function create_layout(picker)
     return string.format(' %s ', title)
   end
 
-  --- @param opts nui_popup_options
-  --- @return TelescopeWindow
   local function make_popup(opts)
     local popup = NuiPopup(opts)
 
@@ -27,7 +20,7 @@ local function create_layout(picker)
       popup.border.set_text(popup.border, 'top', format_title_text(title))
     end
 
-    return TSLayout.Window(popup --[[@as TelescopeWindow.config]])
+    return TSLayout.Window(popup)
   end
 
   local prompt = make_popup({
@@ -83,27 +76,30 @@ local function create_layout(picker)
     NuiLayout.Box(preview, { size = '60%' }),
   }, { dir = 'row' })
 
-  local layout_size = {
-    width = '80%',
-    height = '80%',
-  }
+  local function get_layout_size()
+    return {
+      width = vim.o.columns < 120 and '95%' or '80%',
+      height = vim.o.lines < 36 and '95%' or '80%',
+    }
+  end
+
+  local update_layout = NuiLayout.update
 
   local layout = NuiLayout({
     relative = 'editor',
     position = '50%',
-    size = layout_size,
+    size = get_layout_size(),
   }, box)
-  --- @cast layout ExtendedNuiLayout
 
   layout.prompt = prompt
   layout.results = results
   layout.preview = preview
 
   function layout:update()
-    layout.update(self, { size = layout_size }, box)
+    update_layout(self, { size = get_layout_size() }, box)
   end
 
-  return TSLayout(layout --[[@as TelescopeLayout.config]])
+  return TSLayout(layout)
 end
 
 return create_layout

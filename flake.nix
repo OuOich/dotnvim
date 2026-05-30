@@ -2,7 +2,7 @@
   description = "Cheng's Neovim (Nixvim) configuration!";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.follows = "nixvim/nixpkgs";
 
     flake-parts.url = "github:hercules-ci/flake-parts/main";
 
@@ -59,6 +59,11 @@
         let
           pkgs = import nixpkgs {
             inherit system;
+
+            config = {
+              allowUnfree = true;
+            };
+
             overlays = [
               inputs.neovim-nightly-overlay.overlays.default
               self.overlays.default

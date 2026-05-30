@@ -6,6 +6,14 @@
       bar = {
         update_debounce = 16;
 
+        # `BufModifiedSet` is rejected by current Neovim nightly, causing dropbar setup to fail during startup.
+        update_events.buf = [
+          "FileChangedShellPost"
+          "TextChanged"
+          "ModeChanged"
+          "BufWritePost"
+        ];
+
         sources.__raw = /* lua */ ''
           function(buf, _)
             local sources = require('dropbar.sources')

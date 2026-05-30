@@ -20,6 +20,8 @@
         "neo-tree"
         "neo-tree-popup"
         "oil_preview"
+        "NeogitStatus"
+        "gitcommit"
       ];
 
       relculright = true;
@@ -122,6 +124,22 @@
             vim.opt_local.signcolumn = 'no'
             vim.opt_local.foldcolumn = '0'
           end
+        end
+      '';
+    }
+
+    {
+      group = "HackFix";
+      desc = "Disable statuscol for Neogit buffers";
+      event = [ "FileType" ];
+      pattern = [ "Neogit*" ];
+      callback.__raw = /* lua */ ''
+        function(args)
+          vim.schedule(function()
+            vim.opt_local.statuscolumn = ""
+            vim.opt_local.signcolumn = 'no'
+            vim.opt_local.foldcolumn = '0'
+          end)
         end
       '';
     }

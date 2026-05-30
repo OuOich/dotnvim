@@ -9,6 +9,8 @@
     ];
 
     settings = {
+      disable_signs = true;
+
       signs = {
         section = [
           "#"

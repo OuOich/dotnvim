@@ -20,8 +20,6 @@
         "neo-tree"
         "neo-tree-popup"
         "oil_preview"
-        "NeogitStatus"
-        "gitcommit"
       ];
 
       relculright = true;
@@ -119,7 +117,7 @@
           local cfg = _G.__statuscol_cfg_cache
           if not cfg or not cfg.ft_ignore then return end
 
-          if vim.tbl_contains(cfg.ft_ignore, vim.bo.filetype) then
+          if vim.bo.buftype == 'nofile' or vim.tbl_contains(cfg.ft_ignore, vim.bo.filetype) then
             vim.opt_local.statuscolumn = ""
             vim.opt_local.signcolumn = 'no'
             vim.opt_local.foldcolumn = '0'

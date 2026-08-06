@@ -2,7 +2,7 @@
 
 {
   extraPackages = with pkgs; [
-    prettier
+    prettierd
     yamllint
   ];
 
@@ -10,7 +10,7 @@
     enable = true;
   };
 
-  plugins.conform-nvim.settings.formatters_by_ft.yaml = [ "prettier" ];
+  plugins.conform-nvim.settings.formatters_by_ft.yaml = [ "prettierd" ];
 
   plugins.lint.lintersByFt.yaml = [ "yamllint" ];
 

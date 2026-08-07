@@ -1,9 +1,7 @@
 { pkgs, ... }:
 
 {
-  dependencies.go = {
-    enable = true;
-  };
+  dependencies.go.enable = false;
 
   extraPackages = with pkgs; [
     gofumpt

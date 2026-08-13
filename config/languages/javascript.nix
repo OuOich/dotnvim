@@ -9,13 +9,21 @@
     enable = true;
   };
 
-  plugins.lsp.servers.oxlint = {
+  plugins.lsp.servers.eslint = {
     enable = true;
 
-    rootMarkers = [
-      "package.json"
-      "deno.json"
+    filetypes = lib.mkAfter [
+      "javascript"
+      "javascriptreact"
+      "javascript.jsx"
+      "typescript"
+      "typescriptreact"
+      "typescript.tsx"
     ];
+  };
+
+  plugins.lsp.servers.oxlint = {
+    enable = true;
   };
 
   plugins.lsp.servers.denols = {

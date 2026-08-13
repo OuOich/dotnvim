@@ -5,6 +5,18 @@
     enable = true;
   };
 
+  plugins.lsp.servers.eslint = {
+    enable = true;
+
+    filetypes = lib.mkAfter [
+      "vue"
+    ];
+  };
+
+  plugins.lsp.servers.oxlint = {
+    enable = true;
+  };
+
   plugins.conform-nvim.settings.formatters_by_ft = {
     vue =
       lib.nixvim.utils.listToUnkeyedAttrs [

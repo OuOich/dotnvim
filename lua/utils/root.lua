@@ -12,7 +12,7 @@ local M = setmetatable({}, {
 --- @alias RootFn fun(buf: number): (string | string[])
 --- @alias RootSpec string | string[] | RootFn
 
-M.spec = { 'lsp', { '.git', '.envrc' }, 'cwd' }
+M.spec = { { '.git', '.envrc' }, 'lsp', 'cwd' }
 
 --- @type table<string, RootFn>
 M.detectors = {}
